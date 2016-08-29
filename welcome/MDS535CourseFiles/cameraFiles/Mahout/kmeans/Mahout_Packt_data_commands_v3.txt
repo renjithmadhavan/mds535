@@ -1,0 +1,9 @@
+export  WORK_DIR=/home/ubuntu/kmeans
+mkdir $WORK_DIR/reuters-out
+cd $WORK_DIR 
+wget http://kdd.ics.uci.edu/databases/reuters21578/reuters21578.tar.gz 
+tar -xvf reuters21578.tar.gz  -C $WORK_DIR/reuters-sgm
+
+
+// before the last step! - this is in k4.5.sh
+mkdir /home/ubuntu/kmeans/reuters-kmeans/clusteredPoints

@@ -1,0 +1,1 @@
+hadoop jar contrib/streaming/hadoop-*streaming*.jar  -file /home/ubuntu/m.py  -mapper /home/ubuntu/m.py  -file /home/ubuntu/r.py  -reducer  /home/ubuntu/r.py -input -/home/ubuntu/hadoop-1.2.1/input.txt  -output output3

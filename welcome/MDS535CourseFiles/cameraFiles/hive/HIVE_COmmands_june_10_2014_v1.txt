@@ -1,0 +1,20 @@
+
+hive> CREATE TABLE ufodata(sighted string, reported string, sighting_location string, shape string, duration string, description string) ROW FORMAT DELIMITED  FIELDS TERMINATED BY '\t';
+OK
+Time taken: 0.026 seconds
+hive> LOAD DATA INPATH '/home/ubuntu/UFO_short.tsv'  OVERWRITE INTO TABLE ufodata;
+hive> select sighting_location from ufodata;
+hive> select reported from ufodata;
+hive> select * from ufodata where reported LIKE '%1995%';
+hive>select sighting_location from ufodata limit 5;
+hive> select * from ufodata where sighting_location  LIKE '%North Haven%';
+hive>describe ufodata;
+hive>show tables;
+hive>CREATE EXTERNAL TABLE  states(abbreviation string, full_name string) ROW FORMAT delimited FIELDS TERMINATED BY '\t' LOCATION '/tmp/states' ;
+hive>  LOAD DATA INPATH '/home/ubuntu/states.txt'  OVERWRITE INTO TABLE states; 
+hive>select * from states;
+hive>select full_name from states where abbreviation like 'CA';
+hive>SELECT t1.sighted, t2.full_name FROM ufodata t1 JOIN states t2 ON (lower(t2.abbreviation) = lower(substr( t1.sighting_location, (length(t1.sighting_location)-1))))  LIMIT 5 ;
+hive>CREATE VIEW IF NOT EXISTS usa_sightings (sighted, reported, shape, state) AS SELECT t1.sighted, t1.reported, t1.shape, t2.full_name FROM ufodata t1 JOIN states t2 ON (LOWER(t2.abbreviation) = LOWER(SUBSTR( t1.sighting_location, (LENGTH(t1.sighting_location)-1)))) ;
+hive>select count(state) from usa_sightings where state = 'California';
+hive>INSERT OVERWRITE DIRECTORY '/tmp/out'  SELECT reported, shape, state FROM usa_sightings WHERE state = 'California' ;

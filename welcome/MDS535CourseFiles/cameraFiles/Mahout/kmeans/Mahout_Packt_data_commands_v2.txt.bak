@@ -1,0 +1,12 @@
+
+
+
+
+export  WORK_DIR=	/home/ubuntu/kmeans
+mkdir $WORK_DIR/reuters-out-seqdir
+mkdir $WORK_DIR/reuters-out
+cd $WORK_DIR 
+wget http://kdd.ics.uci.edu/databases/reuters21578/reuters21578.tar.gz 
+tar -xvf reuters21578.tar.gz.1  -C $WORK_DIR/reuters-sgm
+
+mkdir /home/ubuntu/kmeans/reuters-kmeans/clusteredPoints

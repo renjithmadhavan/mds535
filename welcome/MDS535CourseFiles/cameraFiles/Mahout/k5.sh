@@ -1,0 +1,1 @@
+mahout clusterdump -i $WORK_DIR/reuters-kmeans/clusters-*-final -o $WORK_DIR/reuters-kmeans/clusterdump -d $WORK_DIR/reuters-out-seqdir-sparse-kmeans/dictionary.file-0 -dt sequencefile -b 100 -n 20 --evaluate -dm org.apache.mahout.common.distance.CosineDistanceMeasure -sp 0 --pointsDir $WORK_DIR/reuters-kmeans/clusteredPoints

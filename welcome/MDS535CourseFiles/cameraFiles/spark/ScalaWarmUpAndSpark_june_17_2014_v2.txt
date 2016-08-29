@@ -1,0 +1,123 @@
+scala> val myVal: String = "Foo"
+myVal: String = Foo
+
+scala> var myVar: String = "Foo"
+myVar: String = Foo
+
+scala> val x = 20;
+x: Int = 20
+
+
+
+scala> if (x < 21){
+     | println("x is less than21");
+     | }else{
+     | println("x is greater");
+     | }
+x is less than21
+
+
+
+scala> val myNumbers = List(1,2,3)
+myNumbers: List[Int] = List(1, 2, 3)
+
+scala> for (num <- myNumbers)
+println(num)
+1
+2
+3
+
+
+
+scala> for (i <- 1 to 10)println(i)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+scala>
+
+scala> val myNumbers = List(1,2,3,4,5,4,3)
+
+scala> for (num <- myNumbers)
+     | println(num)
+scala> for (i <- 1 to 10)println(i)
+
+
+scala> var count  = 0
+count: Int = 0
+
+scala> do {
+     | count += 1
+     | println(count)
+     | } while(count < 10)
+
+
+scala> def cube(a: Int): Int = a * a * a
+
+scala> myNumbers.map(x => cube(x))
+
+scala> myNumbers.map(x => x * x * x)
+scala> def factorial(n:Int):Int = if (n==0) 1 else n * factorial(n-1)
+
+scala> myNumbers.map(factorial)
+
+scala> myNumbers.map(factorial).sum
+scala>
+
+
+scala> List(1,2,3,4,5) map { _ * 2}
+
+scala> List(1,2,3,4,5) reduceLeft { _ * _ }
+res15: Int = 120
+
+
+
+
+scala> var factor = 3
+factor: Int = 3
+
+scala> val multiplier = (i:Int) => i * factor
+multiplier: Int => Int = <function1>
+
+scala> val l1 = List(1,2,3,4,5) map multiplier
+l1: List[Int] = List(3, 6, 9, 12, 15)
+
+scala> factor = 5
+factor: Int = 5
+
+scala> val l2 = List(1,2,3,4,5)map multiplier
+l2: List[Int] = List(5, 10, 15, 20, 25)
+
+scala> l1
+res19: List[Int] = List(3, 6, 9, 12, 15)
+
+scala> l2
+res20: List[Int] = List(5, 10, 15, 20, 25)
+
+
+
+
+
+scala> val file = sc.textFile("README.md")
+scala> val conjunction = file.filter(line => line.contains("and"))
+scala> conjunction.count()
+scala>val counts = file.flatMap(line => line.split(" ")).map(word =>(word,1)).reduceByKey(_ + _)
+scala>println(counts)
+scala>counts.collect()
+
+scala>var NUM_SAMPLES=5
+scala> val count = sc.parallelize(1 to NUM_SAMPLES).map{i =>
+     | val x = Math.random()
+     | val y = Math.random()
+     |   if (x*x + y*y < 1) 1 else 0
+     | }.reduce(_ + _)
+
+
+println("Pi is roughly " + 4.0 * count / NUM_SAMPLES)
