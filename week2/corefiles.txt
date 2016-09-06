@@ -1,0 +1,38 @@
+ubuntu@ip-172-31-61-210:~/hadoop-1.2.1/conf$ cat core-site.xml hdfs-site.xml mapred-site.xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>fs.default.name</name>
+        <value>hdfs://ec2-54-159-92-170.compute-1.amazonaws.com:9000</value>
+    </property>
+</configuration>
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>
+
+
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+     <property>
+          <name>mapred.job.tracker</name>
+          <value>ec2-54-159-92-170.compute-1.amazonaws.com:54311</value>
+     </property>
+</configuration>
+ubuntu@ip-172-31-61-210:~/hadoop-1.2.1/conf$
