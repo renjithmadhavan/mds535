@@ -1,0 +1,36 @@
+
+grunt> dividends = load 'NYSE_dividends' as (exchange, symbol, date, dividend);
+grunt> dump dividends;
+
+grunt> dividends = load 'NYSE_dividends' as (exchange, symbol, date, dividend);
+grunt> groups = group   dividends by symbol;
+grunt> avg = foreach groups generate group, AVG(dividends.dividend);
+grunt> store avg  into 'average_dividend';
+
+grunt> dividends = load 'NYSE_dividends' as (exchange, symbol, date, dividend);
+grunt> groups = group dividends by symbol;
+grunt> md = foreach groups generate group, MAX(dividends.dividend);
+grunt> store md into 'max_dividend';
+
+
+
+grunt> dividends = load 'NYSE_dividends' as (exchange, symbol, date, dividend);
+grunt> groups = group dividends by symbol;
+grunt> record = foreach groups generate group, MAX(dividends.dividend) * 100;
+grunt> store record into 'percent_dividend';
+
+
+
+grunt> dividends  = load 'NYSE_dividends' as (exchange, stock_symbol, date, dividends);
+grunt> daily = load 'NYSE_daily';
+grunt> jnd   = join dividends by stock_symbol, daily by $1;                          
+
+
+daily = load 'NYSE_daily';
+fltrd = filter daily by $6 > $3;
+dump fltrd;
+
+
+divs    = load 'NYSE_dividends';
+first10 = limit divs 10;
+dump first10;

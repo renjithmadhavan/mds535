@@ -1,0 +1,23 @@
+
+hive> CREATE TABLE ufodata(sighted string, reported string, sighting_location string, shape string, duration string, description string) ROW FORMAT DELIMITED  FIELDS TERMINATED BY '\t';
+OK
+Time taken: 0.026 seconds
+hive> LOAD DATA INPATH '/home/ubuntu/UFO_short.tsv'  OVERWRITE INTO TABLE ufodata;
+Loading data to table default.ufodata6
+Table default.ufodata6 stats: [num_partitions: 0, num_files: 1, num_rows: 0, total_size: 6341, raw_data_size: 0]
+OK
+Time taken: 0.191 seconds
+hive>
+hive> select sighting_location from ufodata;
+hive> select reported from ufodata;
+hive> select * from ufodata where reported LIKE '%1995%';
+select sighting_location from ufodata limit 5;
+
+
+hive> select * from ufodata where sighting_location  LIKE '%North Haven%';
+
+hive>describe ufodata;
+
+hive>show tables;
+hive>CREATE EXTERNAL TABLE  states(abbreviation string, full_name string) ROW FORMAT delimited FIELDS TERMINATED BY '\t' LOCATION '/tmp/states' ;
+hive>  LOAD DATA INPATH '/home/ubuntu/states.txt'  OVERWRITE INTO TABLE states; 

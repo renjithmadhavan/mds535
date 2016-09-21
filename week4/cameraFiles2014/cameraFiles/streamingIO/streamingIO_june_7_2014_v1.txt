@@ -1,0 +1,3 @@
+echo "foo foo foo goo goo bar junk junk bunk bunk bunk bunk" | ./m.py
+echo "foo foo foo goo goo bar junk junk bunk bunk bunk bunk" | ./m.py | sort -k1,1  | ./r.py
+hadoop jar  /home/ubuntu/hadoop-1.2.1/contrib/streaming/hadoop-*streaming*.jar  -file /home/ubuntu/m.py  -mapper /home/ubuntu/m.py  -file /home/ubuntu/r.py  -reducer /home/ubuntu/r.py -input /home/ubuntu/input.txt  -output output
