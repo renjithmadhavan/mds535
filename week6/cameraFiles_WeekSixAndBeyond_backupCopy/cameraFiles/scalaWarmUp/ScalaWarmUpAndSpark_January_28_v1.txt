@@ -1,0 +1,95 @@
+
+8 * 5 + 2
+0.5 * res0
+"Hello, " + res0
+10.toString()
+
+
+var answer = 8 * 5 + 2
+var a = 10
+var b = 20
+a + b
+
+a.+(b)
+val myVal:String = "Foo"
+var myVar:String = "Foo"
+
+val myVal: String = "Foo"
+var myVar: String = "Foo"
+myVal = "test" // gave an error
+myVar = "test" // can change
+
+val x = 20;
+if (x < 21){
+println("x is less than 21");
+}else{
+println("x is greater");
+}
+
+val myNumbers = List(1,2,3,4,5,4,3)
+for (num <- myNumbers)
+    println(num)
+for (i <- 1 to 10)println(i)
+var count  = 0
+do {
+      count += 1
+      println(count)
+      } while(count < 10)
+
+
+
+var myVar = List(1,2,3)
+myVar.foreach((arg: Int) => println(arg))
+List(1,2,3).foreach((arg: Int) => println(arg))
+List(1,2,3).foreach(println)
+for (arg <- List(1,2,3))
+      println(arg)
+
+
+
+
+def cube(a: Int): Int = a * a * a
+myNumbers.map(x => cube(x))
+myNumbers.map(x => x * x * x)
+val myNumbers = List(1,2,3,4,5,4,3)
+
+def factorial(n:Int):Int = if (n==0) 1 else n * factorial(n-1)
+myNumbers.map(factorial)
+myNumbers.map(factorial).sum
+
+List(1,2,3,4,5) map { _ * 2}
+List(1,2,3,4,5) reduceLeft { _ * _ }
+
+var factor = 3
+val multiplier = (i:Int) => i * factor
+val l1 = List(1,2,3,4,5) map multiplier
+
+class Person{
+private var privateAge= 0
+def age = privateAge
+def age_=(newValue: Int){if (newValue > privateAge) privateAge = newValue;
+}}
+val fred = new Person
+fred.age =30
+fred.age = 21
+println(fred.age)
+
+
+val file = sc.textFile("README.md")
+val c = file.filter(line => line.contains("and"))
+c.collect()
+
+
+
+
+val counts = file.flatMap(line => line.split(" ")).map(word =>(word,1)).reduceByKey(_ + _)
+println(counts)
+counts.collect()
+
+
+
+println(result.collect().mkString(','))
+
+val lines = sc.parallelize(List("pandas","I like Pandas"))
+val input =sc.parallelize(List(1,2,3,4))
+val result = input.map(x => x * x )

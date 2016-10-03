@@ -1,0 +1,3 @@
+bin/spark-submit --class com.oreilly.learningsparkexamples.mini.scala.WordCount target/scala-2.10/learning-spark-mini-example_2.10-0.0.1.jar   local[4]
+
+

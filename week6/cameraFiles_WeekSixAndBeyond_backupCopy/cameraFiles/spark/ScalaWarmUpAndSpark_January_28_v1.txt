@@ -1,0 +1,90 @@
+val myVal: String = "Foo"
+var myVar: String = "Foo"
+
+
+
+
+val x = 20;
+if (x < 21){
+println("x is less than 21");
+}else{
+println("x is greater");
+}
+
+
+
+
+val myNumbers = List(1,2,3)
+for (num <- myNumbers)
+println(num)
+
+
+
+for (i <- 1 to 10) println(i)
+
+
+val myNumbers = List(1,2,3,4,5,4,3)
+for (num <- myNumbers)
+println(num)
+
+
+
+var count  = 0
+do {
+      count += 1
+      println(count)
+      } while(count < 10)
+
+
+
+def cube(a: Int): Int = a * a * a
+
+myNumbers.map(x => cube(x))
+
+myNumbers.map(x => x * x * x)
+
+
+def factorial(n:Int):Int = if (n==0) 1 else n * factorial(n-1)
+
+myNumbers.map(factorial)
+
+myNumbers.map(factorial).sum
+
+
+List(1,2,3,4,5) map { _ * 2}
+
+List(1,2,3,4,5) reduceLeft { _ * _ }
+
+
+
+var factor = 3
+val multiplier = (i:Int) => i * factor
+val l1 = List(1,2,3,4,5) map multiplier
+
+
+scala> l1
+res19: List[Int] = List(3, 6, 9, 12, 15)
+
+scala> l2
+res20: List[Int] = List(5, 10, 15, 20, 25)
+
+
+
+
+
+scala> val file = sc.textFile("README.md")
+scala> val conjunction = file.filter(line => line.contains("and"))
+scala> conjunction.count()
+scala>val counts = file.flatMap(line => line.split(" ")).map(word =>(word,1)).reduceByKey(_ + _)
+scala>println(counts)
+scala>counts.collect()
+
+scala>var NUM_SAMPLES=5
+scala> val count = sc.parallelize(1 to NUM_SAMPLES).map{i =>
+     | val x = Math.random()
+     | val y = Math.random()
+     |   if (x*x + y*y < 1) 1 else 0
+     | }.reduce(_ + _)
+
+
+println("Pi is roughly " + 4.0 * count / NUM_SAMPLES)
