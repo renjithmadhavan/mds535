@@ -1,0 +1,5 @@
+http://hortonworks.com/blog/data-science-apacheh-hadoop-predicting-airline-delays/
+
+http://hortonworks.com/blog/data-science-hadoop-spark-scala-part-2/
+
+http://hortonworks.com/blog/data-science-hadoop-predicting-airline-delays-part-3/
