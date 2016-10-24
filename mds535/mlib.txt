@@ -1,0 +1,21 @@
+http://qwone.com/~jason/20Newsgroups
+
+http://qwone.com/~jason/20Newsgroups/20news-bydate.tar.gz
+
+./SPARK_HOME/bin/spark-shell --driver-memory 4g
+
+val path = "20news-bydate-train/*"
+val rdd = sc.wholeTextFiles(path)
+val text = rdd.map { case (file, text) => text }
+println(text.count)
+
+
+val newsgroups = rdd.map { case (file, text) => file.split("/").takeRight(2).head }
+val countByGroup = newsgroups.map(n => (n, 1)).reduceByKey(_ + _).collect.sortBy(-_._2).mkString("\n")
+println(countByGroup)
+
+#White space tokenization
+
+val text = rdd.map { case (file, text) => text }
+val whiteSpaceSplit = text.flatMap(t => t.split(" ").map(_.toLowerCase))
+println(whiteSpaceSplit.distinct.count)
